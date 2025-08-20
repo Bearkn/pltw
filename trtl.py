@@ -47,7 +47,7 @@ t.penup()
 t.goto(-100, 100)
 t.color("darkbrown")
 t.pendown()
-for _ in range(20):
+for x in range(20):
     t.forward(200)
     t.right(170)
     t.forward(200)
