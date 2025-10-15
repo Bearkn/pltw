@@ -35,7 +35,7 @@ scorer.teleport(350,350)
 # scorer.showturtle()
 
 
-timer = 5
+timer = 2
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 counter = t.Turtle()

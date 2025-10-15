@@ -39,52 +39,58 @@ def get_scores(file_name):
         leader_score = ""    
         index = 0
 
-        # # TODO 3: use a while loop to index beyond the comma, skipping the player's name
-        # while (line[index] != ","):
-        #     index += 1
-        
-        #     # TODO 4: use a while loop to get the score
-        # while (line[index] != "\n"):
-        #     leader_score = leader_score + line[index] 
-        #     index += 1
+        # TODO 3: use a while loop to index beyond the comma, skipping the player's name
+        while index < len(line) and line[index] != ",":
+            index += 1
+        index += 1
+            # TODO 4: use a while loop to get the score
+        while index < len(line) and line[index] != "\n":
+            leader_score = leader_score + line[index] 
+            index += 1
         #     # TODO 5: add the player score to the scores list
-        #     scores.append(leader_score);
+        if leader_score:
+            scores.append(int(leader_score));
         # print(leader_score)
     leaderboard_file.close()
 
     # TODO 7: return the scores in place of the empty list
-    return []
+    return scores
 
 
     # update leaderboard by inserting the current player and score to the list at the correct position
 def update_leaderboard(file_name, leader_names, leader_scores,  player_name, player_score):
-
+    
     index = 0
     # TODO 8: loop through all the scores in the existing leaderboard list
-    '''
-    for   :
+    
+    for i in range(len(leader_scores)):
         # TODO 9: check if this is the position to insert new score at
-        if ():
-        break
+        if (player_score >= leader_scores[i]):
+            index = i
+            break
         else:
-        index = index + 1
-    '''
+            index = i + 1
+    
     
     # TODO 10: insert new player and score
+    leader_scores.insert(index, player_score)
+    leader_names.insert(index, player_name)
 
     # TODO 11: keep both lists at 5 elements only (top 5 players)
-    
+    if (len(leader_scores) > 5):
+        leader_scores.pop()
+        leader_names.pop()
     # TODO 12: store the latest leaderboard back in the file
     
-    '''
+    
     leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
     
     # TODO 13 loop through all the leaderboard elements and write them to the the file
-    for   :
+    for  i in range(len(leader_scores)) :
         leaderboard_file.write(leader_names[index] + "," + str(leader_scores[index]) + "\n")
 
     leaderboard_file.close()
-    '''
+    
     
 
     # draw leaderboard and display a message to player
