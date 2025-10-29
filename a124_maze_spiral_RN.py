@@ -7,6 +7,9 @@ maze_painter.hideturtle()
 maze_painter.speed(0)
 
 maze_runner = t.Turtle()
+maze_runner.shape("turtle")
+maze_runner.penup()
+maze_runner.goto(0, 0)
 
 # variables
 '''The number of walls
@@ -73,18 +76,30 @@ def randomize_door_barrier_location():
     door_location = rand.randint(maze_wall_width*2, (wall_length - maze_wall_width*2))
     barrier_location = rand.randint(maze_wall_width*2, (wall_length - maze_wall_width*2))
 
-def runner_movement(direction):
-    if(direction == "up"):
-        maze_runner.up()
-    elif(direction == "down"):
-        maze_runner.down()
-    elif(direction == "right"):
-        maze_runner.goto(maze_runner.xcor + 10,maze_runner.ycor)
-    elif(direction == "left"):
-        maze_runner.goto(maze_runner.xcor - 10,maze_runner.ycor)
+def move_up():
+    maze_runner.setheading(90)
+    maze_runner.forward(10)
+
+def move_down():
+    maze_runner.setheading(270)
+    maze_runner.forward(10)
+
+def move_left():
+    maze_runner.setheading(180)
+    maze_runner.forward(10)
+
+def move_right():
+    maze_runner.setheading(0)
+    maze_runner.forward(10)
+        
 draw_maze()
 
 wn = t.Screen()
-wn.onkeypress(runner_movement("up"),"w")
+
+wn.onkeypress(move_up, "Up")
+wn.onkeypress(move_down, "Down")
+wn.onkeypress(move_left, "Left")
+wn.onkeypress(move_right, "Right")
 wn.listen()
+
 wn.mainloop()
