@@ -33,7 +33,7 @@ cursor.penup()
 cursor.shape("line")
 cursor.teleport(-600, 100)
 
-timer = 10
+timer = 20
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 counter = turt.Turtle()
@@ -77,7 +77,7 @@ def countdown():
         timer_up = True
         print("time is up", timer_up)
         counter.teleport(0,0)
-        counter.write("Your Words Per Miniute is " + str((word_index/5)/(10/60.)), font=font_setup)
+        counter.write("Your Words Per Miniute is " + str((word_index/5)/(20/60.)), font=font_setup)
     else:
         counter.write("Timer: " + str(timer), font=font_setup)
         timer -= 1
@@ -92,7 +92,7 @@ def pick_10_words():
 def write_top_line():
     
     """Write only the top line"""
-    # Clear only the top line area (you might want to be more precise with clearing)
+    # Clear only the top line area 
     top_writer.clear()
     top_writer.penup()
     top_writer.teleport(-600, 100)
